@@ -5,9 +5,14 @@ from datetime import datetime
 # ============================================================
 # الاتصال بقاعدة البيانات
 # ============================================================
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+import streamlit as st
+from supabase import create_client
+
+# تأكد أن الأسماء داخل القوسين تطابق تماماً ما كتبته في الـ Secrets
+url = st.secrets["SUPABASE_URL"]
+key = st.secrets["SUPABASE_KEY"]
+
+supabase = create_client(url, key)
 
 # ============================================================
 # دوال المستخدمين
